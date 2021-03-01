@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     # get "/one_product_path/:id" => "products#one_product_action"
 
     get "/products/:id" => "products#show"
+
+    patch "/products/:id" => "products#update"
   end
 end
