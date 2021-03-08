@@ -1,5 +1,5 @@
 class Supplier < ApplicationRecord
   def products
-    Products.where(supplier_id: id)
+    Product.where(supplier_id: id)
   end
 end
