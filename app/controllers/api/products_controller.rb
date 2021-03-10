@@ -1,4 +1,7 @@
 class Api::ProductsController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
+  before_action :authenticate_user, except: [:index]
+
   def index
     @products = Product.all
 
@@ -7,13 +10,6 @@ class Api::ProductsController < ApplicationController
     # end
 
     render "index.json.jb"
-  end
-
-
-  def show
-    product_id = params["id"]
-    @product = Product.find_by(id: product_id)
-    render "show.json.jb"
   end
 
   def create
@@ -28,6 +24,12 @@ class Api::ProductsController < ApplicationController
     else
       render json: { errors: @product.errors.full_messages }, status: 406
     end
+  end
+
+  def show
+    # product_id = params["id"]
+    @product = Product.find_by(id: params[:id])
+    render "show.json.jb"
   end
 
   def update
