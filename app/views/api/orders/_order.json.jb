@@ -1,8 +1,10 @@
 {
   id: order.id,
-  user_id: order.user_id,
+  user: order.user_id,
+  # user_id: order.user_id,
+  # product: order.product.name,
   product_id: order.product_id,
-  product_price: order.product.price,
+  # product_price: order.product.price,
   quantity: order.quantity,
   subtotal: order.subtotal,
   tax: order.tax,
