@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     delete "suppliers/:id" => "suppliers#destroy"
 
     post "/orders" => "orders#create"
+    get "/orders" => "orders#index"
+    get "/orders/:id" => "orders#show"
 
     post "/users" => "users#create"
     post "/sessions" => "sessions#create"
