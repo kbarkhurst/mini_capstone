@@ -1,9 +1,20 @@
 class Api::ProductsController < ApplicationController
   before_action :authenticate_admin, except: [:index, :show]
-  before_action :authenticate_user, except: [:index]
+  before_action :authenticate_user, except: [:index, :show]
 
   def index
     @products = Product.all
+
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      @products = category.products
+    end
+
+    #long-form, this query lets us search for within, that could deal with spaces in categories
+    # if params[:category]
+    #   category = Category.find_by("name ILIKE ?", "%#{params[:category]}%")
+    #   @products = category.products
+    # end
 
     # if params[:search]
     #   @products = Product.where("title ILIKE ?", "%#{params[:search]}%")
