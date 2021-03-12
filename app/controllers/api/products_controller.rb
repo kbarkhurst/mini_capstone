@@ -33,8 +33,7 @@ class Api::ProductsController < ApplicationController
   end
 
   def update
-    product_id = params[:id]
-    @product = Product.find_by(id: product_id)
+    @product = Product.find_by(id: params[:id])
 
     @product.name = params[:name] || @product.name
     @product.price = params[:price] || @product.price
@@ -47,8 +46,7 @@ class Api::ProductsController < ApplicationController
   end
 
   def destroy
-    product_id = params[:id]
-    product = Product.find_by(id: product_id)
+    product = Product.find_by(id: params[:id])
     product.destroy
     render json: { message: "Your product was successfully deleted" }
   end
