@@ -22,5 +22,9 @@ Rails.application.routes.draw do
 
     post "/users" => "users#create"
     post "/sessions" => "sessions#create"
+
+    get "/cart" => "carted_products#index"
+    get "/cart/:id" => "carted_products#show"
+    post "cart" => "carted_products#create"
   end
 end
