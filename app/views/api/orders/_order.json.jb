@@ -3,10 +3,18 @@
   user: order.user_id,
   # user_id: order.user_id,
   # product: order.product.name,
-  product_id: order.product_id,
+  # product_id: order.product_id,
   # product_price: order.product.price,
-  quantity: order.quantity,
+  # quantity: order.quantity,
+  # products: carted_products.products.all,
   subtotal: order.subtotal,
   tax: order.tax,
   total: order.total,
+  carted_products: order.carted_products.map do |carted_product|
+    {
+      id: carted_product.id,
+      quantity: carted_product.quantity,
+      product: carted_product.product,
+    }
+  end,
 }

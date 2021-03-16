@@ -1,7 +1,10 @@
 {
   cart_id: carted_product.id,
-  user: carted_product.user_id,
-  product: carted_product.product_id,
+  user: current_user.id,
+  user_name: current_user.name,
+  # user: carted_product.user_id,
+  user_message: "There's noone like you, #{current_user.name}",
+  product: carted_product.product,
   product_quantity: carted_product.quantity,
   status: carted_product.status,
 }
