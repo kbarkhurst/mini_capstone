@@ -1,9 +1,13 @@
 class Product < ApplicationRecord
   belongs_to :supplier
   has_many :images
-  # has_many :orders
+
   has_many :category_products
   has_many :categories, through: :category_products
+
+  has_many :carted_products
+  has_many :orders, through: :carted_products
+  has_many :users, through: :carted_products
 
   # validates :image_url, presence: true
   # validates :inventory_count, numericality: { only_integer: true, :greater_than => 0, message: "**Your inventory count must be more than 0**" }
